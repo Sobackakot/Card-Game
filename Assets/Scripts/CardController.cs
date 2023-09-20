@@ -1,6 +1,5 @@
 
-using System.Collections;
-using System.Collections.Generic; 
+using System.Collections; 
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,26 +7,27 @@ using UnityEngine.UI;
 public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     [SerializeField] private RectTransform cardRectTransform;
-    [SerializeField] private RectTransform targetAnchoredPosition;
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private RectTransform targetPosition;
+    [SerializeField] private float spidTransform =5;
+    
+    private Image selectedCard;
 
-    private Vector2 originalAnchoredPosition;
-    private Vector2 finalAnchoredPosition;
-
-    [SerializeField] private Image _showCurrentCard;
-    [SerializeField] private Image _cardPrefab;
+    private Vector3 originalAnchoredPosition;
+    private Vector3 finalAnchoredPosition; 
 
     private Vector3 originalScale;
     private Coroutine _coroutineScale; 
-    private float scaleSpeed = 5f;
+    private float scaleSpeed = 3f;
+
+    public GameObject childObject;
 
     private void Start()
-    {
-        originalAnchoredPosition = cardRectTransform.anchoredPosition;
-        finalAnchoredPosition = targetAnchoredPosition.anchoredPosition;
+    {   
+        originalAnchoredPosition = cardRectTransform.position;
+        finalAnchoredPosition = targetPosition.position; 
         originalScale = transform.localScale;
-    }
-
+        selectedCard = GetComponent<Image>(); 
+    } 
     public void OnPointerClick(PointerEventData eventData) //IPointerClickHandler - listens to the click
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -52,10 +52,11 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
     }
 
     public virtual void LeftMouseClick()
-    { 
+    {
         StartCoroutine(MoveCardToTarget());
-        _showCurrentCard.sprite = _cardPrefab.sprite; 
-        Destroy(gameObject);
+        StartCoroutine(ScaleElement(originalScale * 3f)); 
+        selectedCard.raycastTarget = false;
+        childObject = GetComponent<GameObject>();
     }
 
     public virtual void RightMouseClick()
@@ -84,24 +85,12 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
 
         while (elapsedTime < 1f)
         {
-            cardRectTransform.anchoredPosition = Vector2.Lerp(originalAnchoredPosition, finalAnchoredPosition, elapsedTime);
-            elapsedTime += Time.deltaTime * moveSpeed;  
+            cardRectTransform.position = Vector3.Lerp(originalAnchoredPosition, finalAnchoredPosition, elapsedTime);
+            elapsedTime += Time.deltaTime * spidTransform;
             yield return null;
-        }
-        // Ensure the card reaches the exact destination
-        cardRectTransform.anchoredPosition = finalAnchoredPosition;
+        } 
+        cardRectTransform.position = finalAnchoredPosition;
     }
-    //private IEnumerable<Vector3> EvaluateSlerpPoints(Vector3 start, Vector3 end, float centerOffset)
-    //{
-    //    var centerPivot = (start + end) * 0.5f;
-    //    centerPivot -= new Vector3(0, -centerOffset);
-    //    var startRelativeCenter = start - centerPivot;
-    //    var endRelativeCenter = end - centerPivot;
-    //    var f = 1f / 10;
-    //    for (var i = 0f; i < 1 + f; i += f)
-    //    {
-    //        yield return Vector3.Slerp(startRelativeCenter, endRelativeCenter, i) + centerPivot;
-    //    } 
-    //}
+     
 }
 
