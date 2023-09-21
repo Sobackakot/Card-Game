@@ -3,43 +3,23 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DropCard : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
+public class DropCard : MonoBehaviour,  IPointerClickHandler
 {
-    [SerializeField] private GameObject parentObject;
-    [SerializeField] private CardController card;
+    [SerializeField] private RectTransform targetFieldRectTransform;
 
-    private Image cardInField; 
-
-    private void Start()
-    { 
-    }
-    public void OnPointerClick(PointerEventData eventData) //IPointerClickHandler - listens to the click
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
-            LeftMouseClick();
-        else
-            RightMouseClick();
-    }
+        {
+            // Check if the card is held by the player (you can use a game manager or other logic to track this)
+            bool isCardHeld = CardGameManager.instanceManager.IsCardHeld(); // Example logic, replace with your own
 
-    public void OnPointerEnter(PointerEventData eventData) // IPointerEnterHandler - Show name item in slot and color slot
-    {
-         
-    }
-
-    public void OnPointerExit(PointerEventData eventData) // IPointerExitHandler - Break show name and color slot
-    {
-         
-    }
-    
-    public virtual void LeftMouseClick()
-    {
-        card.childObject.transform.SetParent(parentObject.transform);
-        cardInField = card.childObject.GetComponent<Image>();
-        cardInField.raycastTarget = false;
-    }
-    public virtual void RightMouseClick()
-    {
-         
+            if (isCardHeld)
+            {
+                // Drop the held card into this field
+                CardGameManager.instanceManager.DropCardIsHold(targetFieldRectTransform);
+            }
+        }
     }
 
 

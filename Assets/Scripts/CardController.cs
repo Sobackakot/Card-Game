@@ -17,9 +17,7 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
 
     private Vector3 originalScale;
     private Coroutine _coroutineScale; 
-    private float scaleSpeed = 3f;
-
-    public GameObject childObject;
+    private float scaleSpeed = 3f; 
 
     private void Start()
     {   
@@ -28,7 +26,7 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
         originalScale = transform.localScale;
         selectedCard = GetComponent<Image>(); 
     } 
-    public void OnPointerClick(PointerEventData eventData) //IPointerClickHandler - listens to the click
+    public void OnPointerClick(PointerEventData eventData)  
     {
         if (eventData.button == PointerEventData.InputButton.Left)
             LeftMouseClick();
@@ -36,12 +34,12 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
             RightMouseClick();
     }
 
-    public void OnPointerEnter(PointerEventData eventData) // IPointerEnterHandler - Show name item in slot and color slot
+    public void OnPointerEnter(PointerEventData eventData)  
     {
         _coroutineScale = StartCoroutine(ScaleElement(originalScale * 1.5f));
     }
 
-    public void OnPointerExit(PointerEventData eventData) // IPointerExitHandler - Break show name and color slot
+    public void OnPointerExit(PointerEventData eventData)  
     { 
         if (_coroutineScale != null)
         {
@@ -52,11 +50,11 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
     }
 
     public virtual void LeftMouseClick()
-    {
+    { 
         StartCoroutine(MoveCardToTarget());
-        StartCoroutine(ScaleElement(originalScale * 3f)); 
-        selectedCard.raycastTarget = false;
-        childObject = GetComponent<GameObject>();
+        StartCoroutine(ScaleElement(originalScale * 3.5f)); 
+        CardGameManager.instanceManager.HoldCard(cardRectTransform);
+        selectedCard.raycastTarget = false; 
     }
 
     public virtual void RightMouseClick()
