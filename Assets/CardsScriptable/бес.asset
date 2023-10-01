@@ -16,7 +16,7 @@ MonoBehaviour:
   image_1: {fileID: 21300000, guid: b018c27034b84e148adbf8d7e1250f9c, type: 3}
   image_2: {fileID: 21300000, guid: 866a116695b0800418252982d8a34266, type: 3}
   hero: 0
-  cardType: sword
+  cardType: Sword
   force: 6
   ability: none
   description: "\u0423\u044F\u0437\u0432\u0438\u043C\u0430 \u043A \u044D\u0444\u0444\u0435\u043A\u0442\u0430\u043C"

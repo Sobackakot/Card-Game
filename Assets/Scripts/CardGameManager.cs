@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+ 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardGameManager : MonoBehaviour
 {
-    public static CardGameManager instanceManager;
+    public static CardGameManager instanceManager; 
+
     public void Start()
     {
         if (instanceManager == null)
@@ -19,7 +20,7 @@ public class CardGameManager : MonoBehaviour
         }
     }
     private bool isCardHeld =false;
-    private Transform heldCard = null;  
+    private Transform heldCard = null;
 
     public bool IsCardHeld()
     {
@@ -36,7 +37,7 @@ public class CardGameManager : MonoBehaviour
     {
         if(isCardHeld && heldCard != null)
         {   
-            heldCard.localScale = Vector3.one;
+            heldCard.localScale = Vector3.one *10; 
             heldCard.SetParent(targetField);
             heldCard.localPosition = Vector3.zero;
             heldCard = null;
