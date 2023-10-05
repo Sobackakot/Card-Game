@@ -1,9 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System; 
 using UnityEngine;
 
 public class EventBus : MonoBehaviour
 {
-    public  static Action layersMasck;
+    public  static event Action OnClick;
+
+    public static void StopCoroutines()
+    {
+        OnClick?.Invoke();
+    }
 }
