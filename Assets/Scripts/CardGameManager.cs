@@ -28,7 +28,9 @@ public class CardGameManager : MonoBehaviour
     }
     
     public void HoldCard(Transform cardTransform)
-    {
+    {   
+        if(isCardHeld && heldCard!=null)
+        EventBus.ReturnCard();
         heldCard = cardTransform;
         isCardHeld = true;
     }

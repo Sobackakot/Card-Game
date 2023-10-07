@@ -1,5 +1,4 @@
-
-using System.Collections;
+ 
 using UnityEngine;
 using UnityEngine.EventSystems; 
 
@@ -16,6 +15,7 @@ public class DropCard : MonoBehaviour,  IPointerClickHandler
             if (CardGameManager.instanceManager.IsCardHeld())
             { 
                 CardGameManager.instanceManager.DropCardIsHold(targetFieldRectTransform); 
+                EventBus.DropCardisField();
             }
         }
     }   

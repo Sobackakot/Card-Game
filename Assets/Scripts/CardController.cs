@@ -12,7 +12,8 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
     [Header("Card Transform")]
     [SerializeField] private RectTransform cardRectTransform;
     [SerializeField] private RectTransform targetPosition;
-    [SerializeField] private float spidTransform =5;
+    [SerializeField] private float moveSpeed = 1;
+    [SerializeField] private RectTransform returnCard;
 
     [SerializeField] private Image imageComponent;
     private SpriteRenderer selectedCard; 
@@ -24,17 +25,21 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
     private Renderer cardLayer;
     private int originalSortingOrder;
     private Vector3 originalScale;
-    private Coroutine _coroutineScale;
-    private Coroutine _coroutineMove;
+    private Coroutine _coroutineScale; 
+    private Coroutine _coroutineMove; 
     private float scaleSpeed = 3f; 
 
     private void OnEnable()
     {
         EventBus.OnClick += EventBus_OnClick;
+        EventBus.OnChange += EventBus_OnChange;
+        EventBus.OnDropCard += EventBus_OnDropCard;
     } 
     private void OnDisable()
     {
         EventBus.OnClick -= EventBus_OnClick;
+        EventBus.OnChange -= EventBus_OnChange;
+        EventBus.OnDropCard -= EventBus_OnDropCard;
     }
     private void Start()
     {  
@@ -45,6 +50,17 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
         imageComponent = GetComponent<Image>();
         cardLayer =GetComponent<Renderer>();
         originalSortingOrder = cardLayer.sortingOrder; 
+    }
+    private void EventBus_OnDropCard()
+    { 
+        selectedCard.sprite = card.image_2; 
+    }
+    private void EventBus_OnChange()
+    {
+        CardGameManager.instanceManager.DropCardIsHold(returnCard);
+        imageComponent.raycastTarget = true;
+        selectedCard.sprite = card.image_2;
+        
     }
     private void EventBus_OnClick()
     {
@@ -69,21 +85,23 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
     }
 
     public void OnPointerExit(PointerEventData eventData)  
-    { 
+    {
+        ResetScale();
+    }
+    private void ResetScale()
+    {
         if (_coroutineScale != null)
         {
             StopCoroutine(_coroutineScale);
             _coroutineScale = null;
             transform.localScale = originalScale;
             cardLayer.sortingOrder = originalSortingOrder;
-            cardLayer.sortingOrder = originalSortingOrder;
         } 
     }
-
     public virtual void LeftMouseClick()
-    {
+    { 
         _coroutineMove = StartCoroutine(MoveCardToTarget());
-        StartCoroutine(ScaleElement(originalScale * 3.5f)); 
+         StartCoroutine(ScaleElement(originalScale * 3.5f)); 
         CardGameManager.instanceManager.HoldCard(cardRectTransform);
         PickUpCard(); 
         ActiveField();   
@@ -114,7 +132,7 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
         while (elapsedTime < 1f)
         {
             cardRectTransform.position = Vector3.Lerp(originalAnchoredPosition, finalAnchoredPosition, elapsedTime);
-            elapsedTime += Time.deltaTime * spidTransform;
+            elapsedTime += Time.deltaTime * moveSpeed;
             cardLayer.sortingOrder = originalSortingOrder + 2;
             yield return null;
         } 
@@ -124,10 +142,10 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
     private void ActiveField()
     {
         string cardType = card.cardType;
-        int playerNumber = 1; //***
+        int playerNumber = 1; ///
         fieldManager.EnableField(cardType, playerNumber);
     }
-    public void PickUpCard()
+    private void PickUpCard()
     {
         if (CardGameManager.instanceManager.IsCardHeld())
         {
@@ -135,6 +153,6 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
             selectedCard.sprite = card.image_1;  
         }
     } 
-    
+     
 }
 

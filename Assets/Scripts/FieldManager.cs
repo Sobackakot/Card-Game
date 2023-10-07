@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+ 
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,7 +28,7 @@ public class FieldManager : MonoBehaviour
     }
 
     public void DisableAllFields(int playerNumber)
-    {
+    {    
         Image[] playerFields = GetPlayerFields(playerNumber);
         foreach (Image field in playerFields)
         {
