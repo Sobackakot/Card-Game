@@ -31,15 +31,15 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
 
     private void OnEnable()
     {
-        EventBus.OnClick += EventBus_OnClick;
-        EventBus.OnChange += EventBus_OnChange;
-        EventBus.OnDropCard += EventBus_OnDropCard;
+        GameEventListener.OnClick += EventBus_OnClick;
+        GameEventListener.OnChange += EventBus_OnChange;
+        GameEventListener.OnDropCard += EventBus_OnDropCard; 
     } 
     private void OnDisable()
     {
-        EventBus.OnClick -= EventBus_OnClick;
-        EventBus.OnChange -= EventBus_OnChange;
-        EventBus.OnDropCard -= EventBus_OnDropCard;
+        GameEventListener.OnClick -= EventBus_OnClick;
+        GameEventListener.OnChange -= EventBus_OnChange;
+        GameEventListener.OnDropCard -= EventBus_OnDropCard;
     }
     private void Start()
     {  
@@ -102,7 +102,7 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
     { 
         _coroutineMove = StartCoroutine(MoveCardToTarget());
          StartCoroutine(ScaleElement(originalScale * 3.5f)); 
-        CardGameManager.instanceManager.HoldCard(cardRectTransform);
+        CardGameManager.instanceManager.HoldCard(cardRectTransform, card);
         PickUpCard(); 
         ActiveField();   
     }
@@ -152,7 +152,6 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
             imageComponent.raycastTarget = false;
             selectedCard.sprite = card.image_1;  
         }
-    } 
-     
+    }    
 }
 

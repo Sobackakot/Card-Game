@@ -943,7 +943,6 @@ GameObject:
   - component: {fileID: 478530736}
   - component: {fileID: 478530738}
   - component: {fileID: 478530739}
-  - component: {fileID: 478530740}
   m_Layer: 0
   m_Name: Long-range2
   m_TagString: long-rangeField
@@ -1046,20 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a4eec41dd20f64fa46cebff59232d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardController: {fileID: 0}
   targetFieldRectTransform: {fileID: 478530735}
---- !u!114 &478530740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478530734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faeab2584e6b1d4595d0adee03c5fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &513168936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,7 +1137,6 @@ GameObject:
   - component: {fileID: 531235792}
   - component: {fileID: 531235794}
   - component: {fileID: 531235795}
-  - component: {fileID: 531235796}
   m_Layer: 0
   m_Name: Sword3
   m_TagString: SwordField
@@ -1254,20 +1239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a4eec41dd20f64fa46cebff59232d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardController: {fileID: 0}
   targetFieldRectTransform: {fileID: 531235791}
---- !u!114 &531235796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531235790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faeab2584e6b1d4595d0adee03c5fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &549251101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2377,7 +2349,6 @@ GameObject:
   - component: {fileID: 787189473}
   - component: {fileID: 787189475}
   - component: {fileID: 787189476}
-  - component: {fileID: 787189477}
   m_Layer: 0
   m_Name: Long-range2
   m_TagString: long-rangeField
@@ -2480,20 +2451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a4eec41dd20f64fa46cebff59232d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardController: {fileID: 0}
   targetFieldRectTransform: {fileID: 787189472}
---- !u!114 &787189477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787189471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faeab2584e6b1d4595d0adee03c5fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &820580004
 GameObject:
   m_ObjectHideFlags: 0
@@ -5852,7 +5810,6 @@ GameObject:
   - component: {fileID: 1852455628}
   - component: {fileID: 1852455630}
   - component: {fileID: 1852455631}
-  - component: {fileID: 1852455632}
   m_Layer: 0
   m_Name: Sword3
   m_TagString: SwordField
@@ -5955,20 +5912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a4eec41dd20f64fa46cebff59232d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardController: {fileID: 0}
   targetFieldRectTransform: {fileID: 1852455627}
---- !u!114 &1852455632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852455626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faeab2584e6b1d4595d0adee03c5fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1868543607 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5427990992125581297, guid: 160b088aa8474a24492026a266fcdf3f, type: 3}
@@ -6063,7 +6007,6 @@ GameObject:
   - component: {fileID: 1894312551}
   - component: {fileID: 1894312553}
   - component: {fileID: 1894312554}
-  - component: {fileID: 1894312555}
   m_Layer: 0
   m_Name: Onagr1
   m_TagString: OnagrLayer
@@ -6166,20 +6109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a4eec41dd20f64fa46cebff59232d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardController: {fileID: 0}
   targetFieldRectTransform: {fileID: 1894312550}
---- !u!114 &1894312555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894312549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faeab2584e6b1d4595d0adee03c5fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1915800881
 GameObject:
   m_ObjectHideFlags: 0
@@ -6225,11 +6155,11 @@ RectTransform:
   - {fileID: 1127728793}
   m_Father: {fileID: 2003373376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 123.08003, y: -425}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -292, y: 47}
   m_SizeDelta: {x: 1096.7, y: 139.66}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &1915800885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6563,6 +6493,7 @@ GameObject:
   - component: {fileID: 2003373375}
   - component: {fileID: 2003373374}
   - component: {fileID: 2003373373}
+  - component: {fileID: 2003373377}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6657,6 +6588,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2003373377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003373372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590230c876b482349aff4cd490f63ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sumScores: {fileID: 333575402}
+  _sumScoreSword: {fileID: 1847223877}
+  _sumScoreRange: {fileID: 1298629651}
+  _sumScoreOnagr: {fileID: 777245582}
 --- !u!1001 &2004005121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7665,7 +7612,6 @@ GameObject:
   - component: {fileID: 2120371313}
   - component: {fileID: 2120371315}
   - component: {fileID: 2120371316}
-  - component: {fileID: 2120371317}
   m_Layer: 0
   m_Name: Onagr1
   m_TagString: OnagrLayer
@@ -7768,20 +7714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a4eec41dd20f64fa46cebff59232d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardController: {fileID: 0}
   targetFieldRectTransform: {fileID: 2120371312}
---- !u!114 &2120371317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120371311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faeab2584e6b1d4595d0adee03c5fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &579777061604555231
 PrefabInstance:
   m_ObjectHideFlags: 0

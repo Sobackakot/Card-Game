@@ -18,5 +18,5 @@ public class Card : ScriptableObject
 
     public string ability = "None";
 
-    public string description = "None";
+    public string description = "None"; 
 }
