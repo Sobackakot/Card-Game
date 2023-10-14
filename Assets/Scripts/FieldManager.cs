@@ -14,6 +14,14 @@ public class FieldManager : MonoBehaviour
     public Image player2LongRangeField;
     public Image player2OnagrField;
 
+    private void OnEnable()
+    {
+        GameEventListener.onEnableField += EnableField;
+    }
+    private void OnDisable()
+    {
+        GameEventListener.onEnableField -= EnableField;
+    }
     public void EnableField(string fieldType, int playerNumber)
     {
         // Disable all fields by default

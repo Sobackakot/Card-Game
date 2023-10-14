@@ -38,10 +38,10 @@ public class CardGameManager : MonoBehaviour
         _card = card; 
     }
 
-    public void DropCardIsHold(Transform targetField)
+    public void DropCardIsHold(Transform targetField )
     {
         if(isCardHeld && heldCard != null)
-        {       
+        { 
             heldCard.localScale = Vector3.one *10; 
             heldCard.SetParent(targetField);
             heldCard.localPosition = Vector3.zero;
@@ -49,5 +49,5 @@ public class CardGameManager : MonoBehaviour
             heldCard = null;
             isCardHeld=false; 
         }
-    }
+    } 
 }

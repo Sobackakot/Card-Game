@@ -28,11 +28,11 @@ public class ScoreCounter : MonoBehaviour
         string typeCard = card.cardType;
         switch (typeCard)
         {
-            case "Sword": totalScoreSword = card.force;
+            case "Sword": totalScoreSword += card.force;
                 break;
-            case "Long-range": totalScoreRange = card.force;
+            case "Long-range": totalScoreRange += card.force;
                 break;
-            case "Onagr": totalScoreOnagr = card.force;
+            case "Onagr": totalScoreOnagr += card.force;
                 break;
             default: break;
         } 
@@ -49,7 +49,6 @@ public class ScoreCounter : MonoBehaviour
         // Calculate total score across all fields
         int totalScore = totalScoreSword + totalScoreRange + totalScoreOnagr;
         _sumScores.text =  totalScore.ToString();
-
     }
 } 
  

@@ -6,17 +6,16 @@ using UnityEngine.UI;
 
 public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {    
-    [SerializeField] private Card card;
-    [SerializeField] private FieldManager fieldManager;
+    [SerializeField] private Card card; 
 
     [Header("Card Transform")]
     [SerializeField] private RectTransform cardRectTransform;
     [SerializeField] private RectTransform targetPosition;
     [SerializeField] private float moveSpeed = 1;
-    [SerializeField] private RectTransform returnCard;
+    [SerializeField] private RectTransform returnCardInFirld;
 
-    [SerializeField] private Image imageComponent;
-    private SpriteRenderer selectedCard; 
+    private Image imageComponentCard;
+    private SpriteRenderer spriteRendererCard; 
 
     private Vector3 originalAnchoredPosition;
     private Vector3 finalAnchoredPosition;
@@ -31,38 +30,38 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
 
     private void OnEnable()
     {
-        GameEventListener.OnClick += EventBus_OnClick;
-        GameEventListener.OnChange += EventBus_OnChange;
-        GameEventListener.OnDropCard += EventBus_OnDropCard; 
+        GameEventListener.OnClick += GameEventListener_OnClick;
+        GameEventListener.OnChange += GameEventListener_OnChange;
+        GameEventListener.OnDropCard += GameEventListener_OnDropCard;
     } 
     private void OnDisable()
     {
-        GameEventListener.OnClick -= EventBus_OnClick;
-        GameEventListener.OnChange -= EventBus_OnChange;
-        GameEventListener.OnDropCard -= EventBus_OnDropCard;
+        GameEventListener.OnClick -= GameEventListener_OnClick;
+        GameEventListener.OnChange -= GameEventListener_OnChange;
+        GameEventListener.OnDropCard -= GameEventListener_OnDropCard;
     }
     private void Start()
     {  
         originalAnchoredPosition = cardRectTransform.position; 
         finalAnchoredPosition = targetPosition.position; 
         originalScale = transform.localScale;
-        selectedCard = GetComponent<SpriteRenderer>();
-        imageComponent = GetComponent<Image>();
+        spriteRendererCard = GetComponent<SpriteRenderer>();
+        imageComponentCard = GetComponent<Image>();
         cardLayer =GetComponent<Renderer>();
         originalSortingOrder = cardLayer.sortingOrder; 
     }
-    private void EventBus_OnDropCard()
-    { 
-        selectedCard.sprite = card.image_2; 
-    }
-    private void EventBus_OnChange()
+    private void GameEventListener_OnDropCard( )
     {
-        CardGameManager.instanceManager.DropCardIsHold(returnCard);
-        imageComponent.raycastTarget = true;
-        selectedCard.sprite = card.image_2;
-        
+        spriteRendererCard.sprite = card.image_2;
+        imageComponentCard.raycastTarget = false;
     }
-    private void EventBus_OnClick()
+    private void GameEventListener_OnChange()
+    {
+        CardGameManager.instanceManager.DropCardIsHold(returnCardInFirld);
+        imageComponentCard.raycastTarget = true;
+        spriteRendererCard.sprite = card.image_2; 
+    }
+    private void GameEventListener_OnClick()
     {
         if (_coroutineMove != null)
         {
@@ -142,16 +141,17 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
     private void ActiveField()
     {
         string cardType = card.cardType;
-        int playerNumber = 1; ///
-        fieldManager.EnableField(cardType, playerNumber);
+        int playerNumber = 1; /// 
+        GameEventListener.EnableField(cardType, playerNumber);
     }
     private void PickUpCard()
     {
         if (CardGameManager.instanceManager.IsCardHeld())
         {
-            imageComponent.raycastTarget = false;
-            selectedCard.sprite = card.image_1;  
+            imageComponentCard.raycastTarget = false;
+            spriteRendererCard.sprite = card.image_1;  
         }
     }    
+
 }
 
