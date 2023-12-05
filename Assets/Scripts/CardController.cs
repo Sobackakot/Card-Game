@@ -53,7 +53,6 @@ public class CardController : MonoBehaviour, IPointerEnterHandler, IPointerClick
     private void GameEventListener_OnDropCard( )
     {
         spriteRendererCard.sprite = card.image_2;
-        imageComponentCard.raycastTarget = false;
     }
     private void GameEventListener_OnChange()
     {
